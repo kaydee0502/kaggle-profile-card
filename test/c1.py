@@ -1,1 +1,0 @@
-s='<g xmlns="http://www.w3.org/2000/svg" style="isolation:isolate"><circle r="22.5" cx="24" cy="24" fill="none" stroke-width="3" style="stroke: rgb(241, 243, 244);"></circle><path d="M 10.774831823419357 42.20288237343632 A 22.5 22.5 0 1 0 24 1.5" fill="none" style="stroke: rgb(101, 31, 255);" stroke-width="3"></path></g>'
