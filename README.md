@@ -1,1 +1,1 @@
-# kaggle_summary_card
+<h1 text-align = "center">Kaggle Profile Summary Card</h1>
