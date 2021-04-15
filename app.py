@@ -46,11 +46,6 @@ def api():
     return "No user!"
 
 
-@app.route("/selection",methods=["GET"])
-def selection():
-    response = HtmlResponse(url = 'http://kaggle.com') 
-    f = Selector(response = response).xpath('//span/text()').extract()
-    return f
 
 
 
