@@ -1,0 +1,8 @@
+{
+  "name": "Kaggle Profile Card",
+  "description": "Your Kaggle profile stats on your GitHub Readme.",
+  "repository": "https://github.com/kaydee0502/kaggle-profile-card/",
+  "logo": "",
+  "keywords": ["github", "dynamic", "readme", "kaggle", "stats"],
+  "addons": []
+}
