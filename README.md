@@ -1,1 +1,1 @@
-# kaggle-profile-card
+# kaggle_summary_card
