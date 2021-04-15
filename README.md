@@ -12,7 +12,7 @@
 <img src="https://kaggle-summary-card.herokuapp.com/api?user=kshitijdhama&" alt="kaydee0502" align ="left" width = "450px"/>
 <img src="https://kaggle-summary-card.herokuapp.com/api?user=aakashverma8900&" align ="right" width = "450px"/>
 
-=>
+
 
 <img src="https://kaggle-summary-card.herokuapp.com/api?user=heyytanay&"  align ="left" width = "450px"/>
 <img src="https://kaggle-summary-card.herokuapp.com/api?user=mrisdal&" align ="right" width = "450px" />
@@ -21,7 +21,7 @@
 
 
 
-=>
+
 
 # Usage
 
