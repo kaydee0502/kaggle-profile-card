@@ -41,7 +41,7 @@ def api():
             
             response = make_response(kstyle.present(obj), 200)
             response.mimetype = "image/svg+xml"
-            response.cache_control.max_age = 300
+            response.cache_control.max_age = 86400
             return response
         return "kaggle profile does not exist"
     return "No user!"
