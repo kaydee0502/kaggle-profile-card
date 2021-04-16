@@ -1,1 +1,6 @@
 /test
+/templates
+/scrape
+/env
+/__pycache__
+
