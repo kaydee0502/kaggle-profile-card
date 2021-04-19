@@ -34,6 +34,7 @@ def api():
         complete_url = "https://kaggle.com/"+request.args["user"]
         response = requests.get(complete_url)
         kstyle = KaggleStyles(extend=extend)
+        
         if response.status_code == 200:
             crawler = KaggleStripper(response)
             data = crawler.start_requests()

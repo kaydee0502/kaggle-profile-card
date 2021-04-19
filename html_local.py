@@ -1,14 +1,22 @@
 from styles import tier_colour
-from badges import badge
+from badges import Badge
+
+
+badge_obj = Badge() 
 
 class KaggleStyles:
     def __init__(self,extend=False):
         if extend == True:
             self.scale = "scale(1.2)"
             self.scaler = 1.2
+            badge_obj.scale = 1.3
+            self.bottom = [100,80]
+         
+            
         else:
             self.scale = "scale(1)"
             self.scaler = 1
+            self.bottom = [0,0]
    
     def present(self,data):
         
@@ -71,17 +79,17 @@ class KaggleStyles:
                     </text>
                 </g>
                 
-               <g xmlns="http://www.w3.org/2000/svg" transform="translate(20.000000,185.000000) scale(0.050000,-0.05)" fill="#ad7615" stroke="none">
+               <g xmlns="http://www.w3.org/2000/svg" transform="translate({20+self.bottom[0]},185.000000) scale(0.050000,-0.05)" fill="#ad7615" stroke="none">
                 <circle xmlns="http://www.w3.org/2000/svg" cx="250" cy="270" r="250"  style="fill:#ffd448;opacity: 0; animation: fadein 0.5s linear forwards 0.4s;"/>
                 <path d="M170 515 c-103 -33 -170 -128 -170 -243 0 -73 15 -114 60 -166 152                 -172 440 -63 440 166 0 99 -44 175 -127 220 -62 34 -142 43 -203 23z m172 -71                 l31 -16 -134 -134 c-74 -74 -137 -134 -141 -134 -17 0 -38 62 -38 110 0 62 18                 106 58 143 59 57 150 69 224 31z"/>
                 
                 </g>
                 
-                <g xmlns="http://www.w3.org/2000/svg" transform="translate(200.000000,185.000000) scale(0.050000,-0.05)" fill="#838280" stroke="none">
+                <g xmlns="http://www.w3.org/2000/svg" transform="translate({200+self.bottom[0]},185.000000) scale(0.050000,-0.05)" fill="#838280" stroke="none">
                 <circle xmlns="http://www.w3.org/2000/svg" cx="250" cy="270" r="250"  style="fill:#e9e9e9;opacity: 0; animation: fadein 0.5s linear forwards 0.4s;"/>
                 <path d="M170 515 c-103 -33 -170 -128 -170 -243 0 -73 15 -114 60 -166 152                 -172 440 -63 440 166 0 99 -44 175 -127 220 -62 34 -142 43 -203 23z m172 -71                 l31 -16 -134 -134 c-74 -74 -137 -134 -141 -134 -17 0 -38 62 -38 110 0 62 18                 106 58 143 59 57 150 69 224 31z"/>
                 </g>
-                <g xmlns="http://www.w3.org/2000/svg" transform="translate(380.000000,185.000000) scale(0.050000,-0.05)" fill="#8e5b3d" stroke="none">
+                <g xmlns="http://www.w3.org/2000/svg" transform="translate({380+self.bottom[0]},185.000000) scale(0.050000,-0.05)" fill="#8e5b3d" stroke="none">
                 <circle xmlns="http://www.w3.org/2000/svg" cx="250" cy="270" r="250"  style="fill:#f0ba7c;opacity: 0; animation: fadein 0.5s linear forwards 0.4s;"/>
                 <path d="M170 515 c-103 -33 -170 -128 -170 -243 0 -73 15 -114 60 -166 152                 -172 440 -63 440 166 0 99 -44 175 -127 220 -62 34 -142 43 -203 23z m172 -71                 l31 -16 -134 -134 c-74 -74 -137 -134 -141 -134 -17 0 -38 62 -38 110 0 62 18                 106 58 143 59 57 150 69 224 31z"/>
                 </g>
@@ -107,9 +115,9 @@ class KaggleStyles:
                   
                 </g>
                 
-                {badge[data["performanceTier"]]}
+                {badge_obj.gen_badge()[data["performanceTier"]]}
                 
-                <g xmlns="http://www.w3.org/2000/svg" transform="translate(392,120)">
+                <g xmlns="http://www.w3.org/2000/svg" transform="translate({345*(badge_obj.scale)+47},120)">
                 
                  
                     <text x="0" y="0" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
