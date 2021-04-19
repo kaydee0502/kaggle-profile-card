@@ -2,6 +2,13 @@ from styles import tier_colour
 from badges import badge
 
 class KaggleStyles:
+    def __init__(self,extend=False):
+        if extend == True:
+            self.scale = "scale(1.2)"
+            self.scaler = 1.2
+        else:
+            self.scale = "scale(1)"
+            self.scaler = 1
    
     def present(self,data):
         
@@ -25,7 +32,7 @@ class KaggleStyles:
        
 
 
-            <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='isolation:isolate' viewBox='0 0 495 195' width='495px' height='195px'>
+            <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='isolation:isolate' viewBox='0 0 {str(495*self.scaler)} 195' width='{str(495*self.scaler)}px' height='195px'>
                     {style}
                     <defs>
                         <clipPath id='_clipPath_OZGVUqgkTHHpPTYeqOmK3uLgktRVSwWw'>
@@ -36,7 +43,7 @@ class KaggleStyles:
                
 
 
-                    <g xmlns="http://www.w3.org/2000/svg" style="isolation:isolate">
+                    <g xmlns="http://www.w3.org/2000/svg"  transform="scale({self.scaler},1)">
                         <path d="M 4.5 0 L 490.5 0 C 492.984 0 495 2.016 495 4.5 L 495 190.5 C 495 192.984 492.984 195 490.5 195 L 4.5 195 C 2.016 195 0 192.984 0 190.5 L 0 4.5 C 0 2.016 2.016 0 4.5 0 Z" style="stroke: #e4e2e2; fill: #fffefe;stroke-miterlimit:10;rx: 4.5;"/>
                     </g>
                     
@@ -120,6 +127,9 @@ class KaggleStyles:
 
 
             """
+            
+            
+     
     
     def medalCounts(self,data,type = None):
         """

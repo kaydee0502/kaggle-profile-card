@@ -25,9 +25,15 @@ def index():
 @app.route("/api",methods=["GET"])
 def api():
     if "user" in request.args:
+        
+        if "extend" in request.args:
+            extend = True
+        else:
+            extend = False
+        
         complete_url = "https://kaggle.com/"+request.args["user"]
         response = requests.get(complete_url)
-        kstyle = KaggleStyles()
+        kstyle = KaggleStyles(extend=extend)
         if response.status_code == 200:
             crawler = KaggleStripper(response)
             data = crawler.start_requests()
@@ -45,6 +51,7 @@ def api():
             return response
         return "kaggle profile does not exist"
     return "No user!"
+
 
 
 
