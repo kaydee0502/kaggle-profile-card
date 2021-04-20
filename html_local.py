@@ -9,14 +9,16 @@ class KaggleStyles:
         if extend == True:
             self.scale = "scale(1.2)"
             self.scaler = 1.2
-            badge_obj.scale = 1.3
-            self.bottom = [100,80]
+            badge_obj.scale = 1.35
+            self.bottom = [120,135]
+            self.medalText = "Medals :"
          
             
         else:
             self.scale = "scale(1)"
             self.scaler = 1
             self.bottom = [0,0]
+            self.medalText = ""
    
     def present(self,data):
         
@@ -95,9 +97,12 @@ class KaggleStyles:
                 </g>
                 
                 
+                 <text x="20" y="173" dominant-baseline="middle" stroke-width="0" style="font-family: Roboto, system-ui, sans-serif;font-weight:700;font-size:16px;font-style:normal;fill:#56595e;stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        {self.medalText}
+                    </text>
+
                 
-                
-                <g xmlns="http://www.w3.org/2000/svg" transform="translate(40,185)">
+                <g xmlns="http://www.w3.org/2000/svg" transform="translate({40+self.bottom[1]},185)">
                     
                     <text x="20" y="-12" dominant-baseline="middle" stroke-width="0" style="font-family: Roboto, system-ui, sans-serif;font-weight:700;font-size:16px;font-style:normal;fill:#ad7615;stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
                         {self.medalCounts(data,type="gold")}
@@ -115,7 +120,12 @@ class KaggleStyles:
                   
                 </g>
                 
+                
+                
                 {badge_obj.gen_badge()[data["performanceTier"]]}
+                
+                
+                {self.rankStatus(data)}
                 
                 <g xmlns="http://www.w3.org/2000/svg" transform="translate({345*(badge_obj.scale)+47},120)">
                 
@@ -165,3 +175,34 @@ class KaggleStyles:
             count += data[section][types[type]]
             
         return count
+    
+    def rankStatus(self,data,type=None):
+        if data["performanceTier"] in ['novice','contributor','staff']:
+            return ""
+        
+        cat = data['performanceTierCategory'] 
+        
+        summary = {"notebooks":"scriptsSummary","discussions":"discussionsSummary","competitions":"competitionsSummary","datasets":"datasetsSummary"}
+        
+        best = data[summary[cat]]["rankHighest"]
+        current = data[summary[cat]]["rankCurrent"]
+        outof = data[summary[cat]]["rankOutOf"]
+        
+        text = f"""
+        
+          <g xmlns="http://www.w3.org/2000/svg" transform="translate({345*(badge_obj.scale)},120)">
+                
+                 
+                    <text x="0" y="0" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        {best}
+                    </text>
+                 <text x="0" y="16" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        {current}
+                    </text>
+                </g>
+        
+        
+        """
+        return text
+        
+        
