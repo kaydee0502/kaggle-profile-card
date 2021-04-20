@@ -12,13 +12,16 @@ class KaggleStyles:
             badge_obj.scale = 1.35
             self.bottom = [120,135]
             self.medalText = "Medals :"
+            self.isExtend = True
          
             
         else:
             self.scale = "scale(1)"
             self.scaler = 1
+            badge_obj.scale = 1
             self.bottom = [0,0]
             self.medalText = ""
+            self.isExtend = False
    
     def present(self,data):
         
@@ -125,7 +128,7 @@ class KaggleStyles:
                 {badge_obj.gen_badge()[data["performanceTier"]]}
                 
                 
-                {self.rankStatus(data)}
+                {self.rankStatus(data,self.isExtend)}
                 
                 <g xmlns="http://www.w3.org/2000/svg" transform="translate({345*(badge_obj.scale)+47},120)">
                 
@@ -176,13 +179,13 @@ class KaggleStyles:
             
         return count
     
-    def rankStatus(self,data,type=None):
-        if data["performanceTier"] in ['novice','contributor','staff']:
+    def rankStatus(self,data,extend=False):
+        if data["performanceTier"] in ['novice','contributor','staff'] or not extend:
             return ""
         
         cat = data['performanceTierCategory'] 
         
-        summary = {"notebooks":"scriptsSummary","discussions":"discussionsSummary","competitions":"competitionsSummary","datasets":"datasetsSummary"}
+        summary = {"notebooks":"scriptsSummary","discussion":"discussionsSummary","competitions":"competitionsSummary","datasets":"datasetsSummary"}
         
         best = data[summary[cat]]["rankHighest"]
         current = data[summary[cat]]["rankCurrent"]
@@ -190,14 +193,26 @@ class KaggleStyles:
         
         text = f"""
         
-          <g xmlns="http://www.w3.org/2000/svg" transform="translate({345*(badge_obj.scale)},120)">
+          <g xmlns="http://www.w3.org/2000/svg" transform="translate(400,40)">
                 
                  
-                    <text x="0" y="0" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
-                        {best}
+                 <text x="0" y="0" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:900;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        Current Rank
                     </text>
-                 <text x="0" y="16" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                 
+                 
+                    <text x="0" y="16" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
                         {current}
+                    </text>
+                     <text x="0" y="32" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:12px;font-style:normal;fill:#56595e;stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        Out of {outof}
+                    </text>
+                 <text x="0" y="50" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:900;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        Highest Rank
+                    </text>
+                    
+                    <text x="0" y="66" word-spacing="-0.2" dominant-baseline="middle" text-anchor="middle" stroke-width="0" style="font-family:sans-serif;font-weight:400;font-size:14px;font-style:normal;fill:{tier_colour[data["performanceTier"]]};stroke:none; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
+                        {best}
                     </text>
                 </g>
         
