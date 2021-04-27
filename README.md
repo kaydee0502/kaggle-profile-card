@@ -18,7 +18,8 @@
 <img src="https://kaggle-summary-card.herokuapp.com/api?user=mrisdal&"  />
 
 
-
+## Extended : 
+<img src="https://kaggle-summary-card.herokuapp.com/api?user=heyytanay&extend"  />
 
 
 
@@ -37,12 +38,18 @@ or
 <img src="https://kaggle-summary-card.herokuapp.com/api?user=<your_kaggle_user_id>" />
 
 ```
+For Extended Card use `extend` with `&` : 
+```md
+![alt](https://kaggle-summary-card.herokuapp.com/api?user=<your_kaggle_user_id>&extend)
+
+```
+
 
 
 
 > Example : If my kaggle profile is `https://www.kaggle.com/kshitijdhama`,
 > I would simply do - `https://kaggle-summary-card.herokuapp.com/api?user=kshitijdhama`
-
+> Extend it using - `https://kaggle-summary-card.herokuapp.com/api?user=kshitijdhama&extend`
 ---
 
 # 📤 Deploying it on your own
