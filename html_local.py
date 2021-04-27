@@ -10,7 +10,7 @@ class KaggleStyles:
             self.scale = "scale(1.2)"
             self.scaler = 1.2
             badge_obj.scale = 1.35
-            self.bottom = [120,135]
+            self.bottom = [120,120]
             self.medalText = "Medals :"
             self.isExtend = True
          
