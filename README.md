@@ -1,8 +1,6 @@
 <p align = "center">
 
 <h2 align="center">Kaggle Profile Summary Card</h2>
-
-<p align="center">Your kaggle stats on your GitHub profile!</p>
 </p>
 
 
